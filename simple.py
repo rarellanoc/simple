@@ -21,6 +21,8 @@ class MyForm(Form):
     ciudad = StringField('ciudad', validators=[DataRequired(),Length(min=5, max=20, message="nombre fuera de rango")])
 # Simple user class base on UserMixin
 # http://flask-login.readthedocs.org/en/latest/_modules/flask/ext/login.html#UserMixin
+
+
 class User(UserMixin):
     '''Simple User class'''
     USERS = {
