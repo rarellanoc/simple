@@ -2,3 +2,8 @@ Flask==0.10.1
 Flask-Login==0.2.11
 Flask-WTF
 wtforms
+Flask-Mail
+Flask-SQLAlchemy
+Flask-script
+mysql-python
+

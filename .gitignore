@@ -1,3 +1,5 @@
+*.pyc
 doc.txt
 simple-venv/
-
+contenedor/
+config.py
