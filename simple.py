@@ -1,7 +1,29 @@
 from flask import Flask, flash, redirect, url_for, request, get_flashed_messages, render_template
 from flask.ext.login import LoginManager, UserMixin, current_user, login_user, logout_user, login_required
+from flask_mail import Mail, Message
+from flask_weasyprint import HTML, render_pdf
+
+
+from flask.ext.sqlalchemy import SQLAlchemy
+
+
+
+
+import config
 
 app = Flask(__name__)
+
+db = SQLAlchemy(app)
+
+
+import model
+
+
+
+app.config.from_object('config')
+
+mail = Mail(app)
+
 
 app.config['SECRET_KEY'] = 'SET T0 4NY SECRET KEY L1KE RAND0M H4SH'
 
@@ -72,8 +94,20 @@ def login_check():
     return redirect(url_for('index'))
 
 
+@app.route("/sendmail")
+def sendmail():
+
+    	msg = Message("Hello",
+                  sender="madeer.lab@gmail.com",
+                  recipients=["its.arellano@gmail.com"])
 
 
+	msg.body = "testing"
+	msg.html = "<b>testing</b>"
+
+	mail.send(msg)
+
+	return "Enviado"
 
 
 @app.route('/logout')
@@ -81,6 +115,12 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+
+@app.route('/hello_<name>.pdf')
+def hello_pdf(name):
+    # Make a PDF straight from HTML in a string.
+    html = render_template('hello.html', name=name)
+    return render_pdf(HTML(string=html))
 
 
 
