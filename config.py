@@ -1,3 +1,6 @@
+import os
+basedir = os.path.abspath(os.path.dirname(__file__))
+
 SECRET_KEY = 'SET T0 4NY SECRET KEY L1KE RAND0M H4SH'
 
 SQLALCHEMY_DATABASE_URI = 'mysql://madeer_dbuser:madeer-2015@mysql.madeer.cl/jugando'

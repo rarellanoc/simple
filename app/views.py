@@ -1,3 +1,18 @@
+from flask import Flask, flash, redirect, url_for, request, get_flashed_messages, render_template
+from flask.ext.login import LoginManager, UserMixin, current_user, login_user, logout_user, login_required
+
+from flask_mail import Mail, Message
+from flask_weasyprint import HTML, render_pdf
+
+
+
+from app import app, model, forms
+
+from forms import MyForm
+from model import User
+
+
+
 @app.route('/')
 def index():  
     
@@ -7,6 +22,18 @@ def index():
         
         
     return render_template('landing.html')
+
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+class UserNotFoundError(Exception):
+    pass
+
+@login_manager.user_loader
+def load_user(id):
+    return User.get(id)
         
 @app.route('/login')
 def login():
@@ -33,9 +60,15 @@ def login_check():
 @app.route("/sendmail")
 def sendmail():
 
-    	msg = Message("Hello",
+    msg = Message("Hello",
                   sender="madeer.lab@gmail.com",
                   recipients=["its.arellano@gmail.com"])
+    msg.body = "testing"
+    msg.html = "<b>testing</b>"
+
+    mail.send(msg)
+
+    return "Enviado"
 
 @app.route('/formulario', methods=('GET', 'POST'))
 def submit():
@@ -45,12 +78,7 @@ def submit():
 	# return redirect(url_for('/success', name=form.name))
     return render_template('formulario.html', form=form)
 
-	msg.body = "testing"
-	msg.html = "<b>testing</b>"
-
-	mail.send(msg)
-
-	return "Enviado"
+	
 
 
 @app.route('/logout')

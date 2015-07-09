@@ -1,4 +1,4 @@
-
+from flask.ext.login import LoginManager, UserMixin, current_user, login_user, logout_user, login_required
 
 from flask.ext.sqlalchemy import SQLAlchemy
 
