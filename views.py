@@ -1,61 +1,3 @@
-from flask import Flask, flash, redirect, url_for, request, get_flashed_messages, render_template
-from flask.ext.login import LoginManager, UserMixin, current_user, login_user, logout_user, login_required
-
-from flask_wtf import Form
-from wtforms import StringField, PasswordField
-from wtforms.validators import DataRequired, Length
-
-from flask_mail import Mail, Message
-from flask_weasyprint import HTML, render_pdf
-
-
-from flask.ext.sqlalchemy import SQLAlchemy
-
-
-
-
-import config
-
-
-app = Flask(__name__)
-
-db = SQLAlchemy(app)
-
-
-import model
-
-
-
-app.config.from_object('config')
-
-mail = Mail(app)
-
-
-
-
-login_manager = LoginManager()
-login_manager.init_app(app)
-
-
-class UserNotFoundError(Exception):
-    pass
-
-
-
-import forms
-    
-    
-
-
-
-
-
-# Flask-Login use this to reload the user object from the user ID stored in the session
-@login_manager.user_loader
-def load_user(id):
-    return User.get(id)
-
-
 @app.route('/')
 def index():  
     
@@ -119,7 +61,7 @@ def logout():
 
 @app.route('/hello_<name>.pdf')
 def hello_pdf(name):
-    # Make a PDF straight from HTML in a string.
+    
     html = render_template('hello.html', name=name)
     return render_pdf(HTML(string=html))
 
@@ -130,10 +72,6 @@ def hello_pdf(name):
 def home():
     return render_template('home.html')
     
-
-
-
-
 
 @app.route("/coleccion")
 def holaColeccion():
@@ -149,8 +87,3 @@ def holaDirectorio():
 def holaEstadisticas():
         nombrevalue = "Ricardo"
         return render_template('estadisticas.html', nombre=nombrevalue)
-
-
-if __name__ == "__main__":
-    app.debug = True
-    app.run()

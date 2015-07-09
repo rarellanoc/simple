@@ -2,9 +2,6 @@
 
 from flask.ext.sqlalchemy import SQLAlchemy
 
-
-
-
 from simple import db
 
 class User(db.Model):
@@ -18,6 +15,30 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.username
+ 
+#copie la clase con los datos del login al modelo
+    
+class User(UserMixin):
+    '''Simple User class'''
+    USERS = {
+        # username: password
+        'john': 'love mary',
+        'mary': 'love peter'
+    }
+
+    def __init__(self, id):
+        if not id in self.USERS:
+            raise UserNotFoundError()
+        self.id = id
+        self.password = self.USERS[id]
+
+    @classmethod
+    def get(self_class, id):
+        '''Return user instance of id, return None if not exist'''
+        try:
+            return self_class(id)
+        except UserNotFoundError:
+            return None
     
     
     
