@@ -150,6 +150,11 @@ def holaEstadisticas():
         nombrevalue = "Ricardo"
         return render_template('estadisticas.html', nombre=nombrevalue)
 
+@app.route("/perfil")
+def holaPerfil():
+        nombrevalue = "Ricardo"
+        return render_template('perfil.html', nombre=nombrevalue)
+
 
 if __name__ == "__main__":
     app.debug = True
