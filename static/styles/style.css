@@ -36,9 +36,9 @@ nav {
 background-color:black;
 width:9%;
 height:20px;
-padding: 1px;
+padding: 0.5px;
 position: relative;
-float: right;
+float: left;
 }
  
 nav ul {
@@ -56,11 +56,11 @@ nav ul li a {
 text-decoration:none;
 color:#fff;
 display:block;
-padding:5px 10px;
+padding:4.7px 10px;
 }
  
 nav ul li a:hover {
-background:#3669a3;
+background:#F58207;
 transition-duration:0.4s;
 }
  

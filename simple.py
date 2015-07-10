@@ -116,6 +116,15 @@ def sendmail():
                   sender="madeer.lab@gmail.com",
                   recipients=["its.arellano@gmail.com"])
 
+        msg.body = "testing"
+        msg.html = "<b>testing</b>"
+
+        mail.send(msg)
+
+        return "Enviado"
+
+
+
 @app.route('/formulario', methods=('GET', 'POST'))
 def submit():
     form = MyForm()
@@ -124,12 +133,7 @@ def submit():
 	# return redirect(url_for('/success', name=form.name))
     return render_template('formulario.html', form=form)
 
-	msg.body = "testing"
-	msg.html = "<b>testing</b>"
-
-	mail.send(msg)
-
-	return "Enviado"
+	
 
 
 @app.route('/logout')
