@@ -89,12 +89,33 @@
                 <li><a class='blackfont' href='estadisticas' >Estadisticas</a></li>
                 
             </ul>
-        
+        </nav>
         </div>
-    </nav>    
+        
         
     
-    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="content">
+        
+        
+        
+        
+          <div id='menu-lateral' >
+	<h3>Menu</h3><img id='img-logo' src="{{ url_for('static', filename='img/logo-white30.png') }}" width='30px' alt='logo' /><a href='#' ><img id='img-flecha-derecha' src="{{ url_for('static', filename='img/flecha-menu-white180.png') }}" alt='esconder menu' /></a>
+	
+	<ul>
+	   <li><a href='/perfil' >Perfil</a></li>
+	   <li><a href='/solicitudes'>Solicitudes</a><div id='nro-solicitudes' > <p>3</p> </div></li>
+	</ul>
+  </div>
+        
+        
+        <div id='caja-principal'>{% block content %}{% endblock %}</div>
+    
+    
+    
+    
+    
+    </div>
     
     
 
@@ -109,14 +130,21 @@
 <script>
    $(document).ready(function(){
 
+       
+       $('#menu-lateral').addClass('absolute-add');
 	   
 	   $(window).bind('scroll', function() {
 	   var navHeight = $( window ).height() - 40;
 			 if ($(window).scrollTop() > 190) {
 				 $('nav').addClass('fixed');
+                 $('#menu-lateral').removeClass('absolute-add');
+                 $('#menu-lateral').addClass('fixed2');
 			 }
 			 else {
 				 $('nav').removeClass('fixed');
+                  $('#menu-lateral').removeClass('fixed2');
+                $('#menu-lateral').addClass('absolute-add');
+                 
 			 }
 		});
 

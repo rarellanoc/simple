@@ -127,9 +127,6 @@ def holaEstadisticas():
         nombrevalue = "Ricardo"
         return render_template('estadisticas.html', nombre=nombrevalue)
 
-<<<<<<< HEAD
-
-
 
 @app.route("/select_<username>")
 def select(username):
@@ -139,8 +136,10 @@ def select(username):
 
 	return render_template('select.html' , usuario = tododeluser.user , ok=encontrado) 	
 
-=======
 @app.route("/solicitudes")
 def holaSolicitudes():
         return render_template('solicitudes.html')
->>>>>>> c82cf91ba958405106db67cd01a358477a48dea9
+
+@app.route("/conocer")
+def holaConocer():
+        return render_template('conocer.html')
