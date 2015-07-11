@@ -36,9 +36,9 @@ nav {
 background-color:black;
 width:9%;
 height:20px;
-padding: 1px;
+padding: 0.5px;
 position: relative;
-float: right;
+float: left;
 }
  
 nav ul {
@@ -56,11 +56,11 @@ nav ul li a {
 text-decoration:none;
 color:#fff;
 display:block;
-padding:5px 10px;
+padding:4.7px 10px;
 }
  
 nav ul li a:hover {
-background:#3669a3;
+background:#F58207;
 transition-duration:0.4s;
 }
  
@@ -126,6 +126,91 @@ ul {list-style-type: none;
 li { width: 130px; 
     float: left ;}
 
+
+
+/* solicitudes */
+
+#content { font-size: 1.2em;
+
+	height: 900px;  }
+
+#menu-lateral { border : 1px solid gray ; 
+		float: left;
+	width: 170px;
+	height: 300px; 
+	float: left;
+	margin: -5px;
+	background-color: #000;  
+	color: #fff; 
+	z-index: 0 ;}
+
+#menu-lateral a { color: #fff; }
+
+#menu-lateral h3 { float: left;
+		width: 60px;
+		height: 30px; 
+		margin: 10px; }
+
+
+
+#img-logo , #img-flecha-derecha { float: right;
+				margin: 5px;  }
+
+#menu-lateral ul { margin-left: -15px;
+		width: 200px;
+		}
+
+#menu-lateral ul li { float: left ;
+			width: 240px; 
+			height: 30px; }
+
+
+.mensaje { 
+	height: 100px;
+	width: 70%;  
+	background-color: #ccc; 
+	float: left;
+	margin: 20px 20px 20px 50px;
+ }
+
+
+.texto-mensaje { font-size: 0.95em ; 
+		margin: 20px 20px 5px 20px;
+		}
+
+.conocer { 
+	font-size: 0.7em; 
+	border: 1px solid gray; 
+	 width: 180px;
+	height: 17px; 
+	float: right; 
+	background-color: #666;
+	padding: 10px; 
+	color: #fff;
+	margin-top: 20px; 
+ 
+	}
+
+.conocer a { color: #fff; 
+	font-size:1.3em}
+
+.conocer img {margin-left: 5px; }
+
+
+/* footer */
+
+
+#footer { height: 130px;
+	bottom: 0px; 
+	position: fixed; 
+	width:100%;
+	background-color: #999; 
+	z-index: 2;
+	}
+
+#footer img { float : right;
+	margin: 10px; }
+	
 
 
 
