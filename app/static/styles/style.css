@@ -138,6 +138,9 @@ li { width: 130px;
 
 
 
+
+
+
 /* solicitudes */
 
 
@@ -148,7 +151,7 @@ li { width: 130px;
 -moz-border-radius: 10px;
 border-radius: 10px; 
 float:left; 
-margin-left: 8px;
+margin-left: 26px;
 margin-top: -2px;  }
 
 
@@ -160,15 +163,26 @@ margin-top: -2px;  }
 
 	height: 900px;  }
 
-#menu-lateral { border : 1px solid gray ; 
-		float: left;
+#container {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;  
+}
+
+#menu-lateral { 
+	position: absolute;
+	border : 1px solid gray ; 
+	float: left;
+	left: 0px;
 	width: 170px;
 	height: 300px; 
 	float: left;
-	margin: -5px;
 	background-color: #000;  
 	color: #fff; 
-	z-index: 0 ;}
+	margin-top: 5px;}
 
 #menu-lateral a { color: #fff; }
 
@@ -176,6 +190,11 @@ margin-top: -2px;  }
 		width: 60px;
 		height: 30px; 
 		margin: 10px; }
+
+
+
+
+
 
 
 
@@ -199,7 +218,7 @@ margin-top: -2px;  }
 	width: 70%;  
 	background-color: #ccc; 
 	float: left;
-	margin: 20px 20px 20px 50px;
+	margin: 20px 20px 20px 200px;
  }
 
 
