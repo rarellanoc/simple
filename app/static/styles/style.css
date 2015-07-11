@@ -254,9 +254,93 @@ margin-top: -2px;  }
 
 
 
+/* Conociendo */
 
-	
+.caja-conociendo {  font-size: 0.7em; 
+
+	 width: 800px;
+	height: auto; 
+	float: left; 
+	background-color: #DCDCDC;
+	color: #fff;
+	margin-top: 50px; 
+    margin-left: 20px;
+    text-transform: none; 
+   
+	}
 
 
 
+#pie-caja {  font-size: 0.7em; 
+	 width: 800px;
+	height: 50px; 
+	float: left; 
+	background-color: #8FBC8F ;
+	color: #fff;
+	bottom: 0;
+    pòsition:relative;
+    
+    }
 
+.img-conociendo { 
+                width: 100%;
+    height: auto;
+    }
+
+.img-conociendo img { float:left;
+    margin: 30px; 
+    
+}
+
+.img-conociendo h2 { float:left; 
+                width: 60%; 
+        margin: 20px 0px 0px 20px; 
+    
+height; 30px; }
+
+.p-container { font-size: 1.4em; 
+                float: left; 
+                    width: 470px;
+            height: 100px;
+                margin: 15px 25px 55px 25px;
+     }
+
+.long { width: 550px; }
+
+
+
+#pie-caja h1 { text-align: center;
+    margin-top:15px;
+    color: #fff;
+}
+
+.caja-flecha2 {
+		width: 34px;
+		height: 25px;
+		margin-top: -25px;
+		margin-right: 5px;
+		float:right;}
+
+.caja-derecha-white {background-color: #000;
+		width: 59px;
+		height: 50px;
+        padding: inherit;
+		margin-top: -50px;
+		margin-right: 743px;
+		float:right;}
+
+#img-ordenar { margin: 16px;}
+
+#img-foto2 { float: left;}
+
+
+#tip-paso { border: 1px dotted gray;
+        text-transform:  none; 
+        width: 220px;
+        height: 150px;
+        margin-top: 50px;
+        float: left;
+    padding: 10px; }
+
+.img-foto { border-radius: 50px;
+    }
