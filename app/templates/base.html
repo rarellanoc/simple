@@ -5,6 +5,12 @@
    
     
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}" />
+
+
+
+
+
+
     
      <title>Madeer onBase</title>
 </head>
@@ -18,7 +24,7 @@
         <a class='whitefont' href='logout' ></a>
         
 
-<nav>
+<div id='navpape'>
 <ul>
 
 <li><a href="perfil">Perfil</a>
@@ -35,7 +41,7 @@
 </ul>
 </div>
  
-</nav>
+</div>
 
 
 
@@ -59,6 +65,8 @@
     </div>
     
     <div id='header'>
+
+	
         
         <div id='header-logo'>
     
@@ -67,7 +75,7 @@
         </div>
         
         
-        <div id='menu'>
+        <nav>
         
             <ul>
             
@@ -78,7 +86,7 @@
             </ul>
         
         </div>
-    </div>    
+    </nav>    
         
     
     <div id="content">{% block content %}{% endblock %}</div>
@@ -91,7 +99,23 @@
 
 </div>
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
+<script>
+   $(document).ready(function(){
+
+	   
+	   $(window).bind('scroll', function() {
+	   var navHeight = $( window ).height() - 40;
+			 if ($(window).scrollTop() > 190) {
+				 $('nav').addClass('fixed');
+			 }
+			 else {
+				 $('nav').removeClass('fixed');
+			 }
+		});
+	});
+</script>
     
 
 </body>

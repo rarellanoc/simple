@@ -5,32 +5,32 @@
 
 
   <div id='menu-lateral'>
-	<h3>Menu</h3><img id='img-logo' src="{{ url_for('static', filename='img/logo-white30.png') }}" width='30px' alt='logo' /><a href='#' ><img id='img-flecha-derecha' src='img/flecha-derecha.png' alt='esconder menu' /></a>
+	<h3>Menu</h3><img id='img-logo' src="{{ url_for('static', filename='img/logo-white30.png') }}" width='30px' alt='logo' /><a href='#' ><img id='img-flecha-derecha' src="{{ url_for('static', filename='img/flecha-menu-white180.png') }}" alt='esconder menu' /></a>
 	
 	<ul>
 	   <li><a href='/perfil' >Perfil</a></li>
-	   <li><a href='/solicitude'>Solicitudes</a></li>
+	   <li><href='/solicitude'>Solicitudes</a><div id='nro-solicitudes' > <p>3</p> </div></li>
 	</ul>
   </div>
 
  <div class='mensaje'>
 	<div class='texto-mensaje'>Ricardo arellano solicita 100 tableros para proyrcto mesas colegio
 	</div>
-	<div class='conocer'>Conocer mas<img src='img/flecha-adelante.png' alt='flecha adelante' />
+	<div class='conocer'><a href='#'>Conocer mas</a><div class='caja-flecha' ><img src="{{ url_for('static', filename='img/flecha-conocenos-white.png') }}" alt='flecha adelante' /></div>
 	</div>
  </div>
 
  <div class='mensaje'>
 	<div class='texto-mensaje'>Ricardo arellano solicita 100 tableros para proyrcto mesas colegio
 	</div>
-	<div class='conocer'>Conocer mas<img src='img/flecha-adelante.png' alt='flecha adelante' />
+	<div class='conocer'><a href='#'>Conocer mas</a><div class='caja-flecha' ><img src="{{ url_for('static', filename='img/flecha-conocenos-white.png') }}" alt='flecha adelante' /></div>
 	</div>
  </div>
 
  <div class='mensaje'>
 	<div class='texto-mensaje'>Ricardo arellano solicita 100 tableros para proyrcto mesas colegio
 	</div>
-	<div class='conocer'>Conocer mas<img src='img/flecha-adelante.png' alt='flecha adelante' />
+	<div class='conocer'><a href='#'>Conocer mas</a><div class='caja-flecha' ><img src="{{ url_for('static', filename='img/flecha-conocenos-white.png') }}" alt='flecha adelante' /></div>
 	</div>
  </div>
 
