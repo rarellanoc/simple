@@ -115,7 +115,3 @@ def holaDirectorio():
 def holaEstadisticas():
         nombrevalue = "Ricardo"
         return render_template('estadisticas.html', nombre=nombrevalue)
-
-@app.route("/solicitudes")
-def holaSolicitudes():
-        return render_template('solicitudes.html')
