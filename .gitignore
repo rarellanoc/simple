@@ -1,4 +1,4 @@
-.pyc
+*.pyc
 doc.txt
 simple-venv/*
 contenedor/*
