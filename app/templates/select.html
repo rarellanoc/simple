@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	{% if encontrado ==  'si' %}
+
+	usuario {{ usuario  }} encontrado
+
+	{% else %}
+
+		no se ha encontrado el usuario : {{  usuario  }}
+
+	{% endif %}
+
+
+{% endblock %}

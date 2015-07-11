@@ -1,5 +1,8 @@
 from flask.ext.script import Manager
-from simple import app, db
+
+
+from app import app
+from app.model import db
 
 manager = Manager(app)
 manager.add_option('-c', '--config', dest='config', required=False)

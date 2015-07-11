@@ -6,10 +6,10 @@ from flask_weasyprint import HTML, render_pdf
 
 
 
-from app import app, model, forms
+from app import app, model, forms, db
 
 from forms import MyForm
-from model import User
+from model import User, usuarios
 
 
 
@@ -87,6 +87,17 @@ def logout():
     return redirect(url_for('index'))
 
 
+@app.route('/database')
+def database():
+    
+	me = usuarios('admin', 'hola-2015')
+	db.session.add(me)
+	db.session.commit()
+
+
+    	return render_template('database.html')
+
+
 @app.route('/hello_<name>.pdf')
 def hello_pdf(name):
     
@@ -115,3 +126,15 @@ def holaDirectorio():
 def holaEstadisticas():
         nombrevalue = "Ricardo"
         return render_template('estadisticas.html', nombre=nombrevalue)
+
+
+
+
+@app.route("/select_<username>")
+def select(username):
+	tododeluser = usuarios.query.filter_by(user=username).first_or_404()
+	
+	encontrado = 'si'
+
+	return render_template('select.html' , usuario = tododeluser.user , ok=encontrado) 	
+

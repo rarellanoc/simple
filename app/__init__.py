@@ -32,19 +32,12 @@ app.config.from_object('config')
 
 mail = Mail(app)
 
-login_manager = LoginManager()
-login_manager.init_app(app)
 
-
-class UserNotFoundError(Exception):
-    pass
 
 from app import forms
     
 
-@login_manager.user_loader
-def load_user(id):
-    return User.get(id)
+
 
 import views
 import model
