@@ -1,0 +1,27 @@
+@mod.route('/tasks', methods=['POST'])
+def create_task():
+
+        me = usuarios('pablo', 'hola-2015')
+        db.session.add(me)
+        db.session.commit()
+
+        if not request.json or not 'title' in request.json:
+                abort(400)
+
+        task = {
+                'title': request.json['title'],
+                'description': request.json.get('description', ""),
+        }
+
+        return jsonify({'task' : task}), 201
+        
+        
+        
+@mod.route('/data', methods=["POST"])
+def data():
+        me = usuarios('pablo', 'hola-2015')
+        db.session.add(me)
+        db.session.commit()
+
+        return "Hello World - you sent me " + str(request.values)
+

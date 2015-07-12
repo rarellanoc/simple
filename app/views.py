@@ -8,6 +8,7 @@ from flask_weasyprint import HTML, render_pdf
 
 from app import app, model, forms, db
 
+from forms import MyFormulario
 from forms import MyForm
 from model import User, usuarios
 
@@ -143,3 +144,12 @@ def holaSolicitudes():
 @app.route("/conocer")
 def holaConocer():
         return render_template('conocer.html')
+
+@app.route('/perfil', methods=('GET', 'POST'))
+def datos():
+    form = MyFormulario()
+    if form.validate_on_submit():
+       return success(request.form['name'])
+	# return redirect(url_for('/success', name=form.name))
+    return render_template('perfil.html', form=form)
+

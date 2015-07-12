@@ -1,5 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
- perfil
+ 
+
+ <div class='caja-perfil'><h1>Datos Perfil Masisa.Felipe</h1>
+	
+     
+    <center>
+<form method="POST" action="/perfil">
+
+    {{ form.csrf_token }}
+    {{ form.Telefono.label }} {{ form.Telefono(size=20) }}
+
+    {{ form.csrf_token }}
+    {{ form.Correo.label }} {{ form.Correo(size=20) }}
+
+    {{ form.csrf_token }}
+    {{ form.Direccion.label }} {{ form.Direccion(size=20) }}
+
+  <input type="submit" value="Go">
+</form>
+</center>
+    
+     
+   
+ </div>
+
+
+        <div id='logo'><div class=logo-empresa><img src="{{ url_for('static', filename='img/masisa_logo.jpg') }}" widht="50px" /><div id='button'><a href="#" class="boton azul">Upload</a></div></div>
+	</div>
+ </div>
+
+
+
+
 {% endblock %}
