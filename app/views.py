@@ -145,6 +145,10 @@ def holaSolicitudes():
 def holaConocer():
         return render_template('conocer.html')
 
+@app.route("/mensaje")
+def holaMensaje():
+        return render_template('mensaje.html')
+
 @app.route('/perfil', methods=('GET', 'POST'))
 def datos():
     form = MyFormulario()

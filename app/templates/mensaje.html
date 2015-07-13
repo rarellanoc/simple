@@ -1,0 +1,51 @@
+
+
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+
+
+ <div class='caja-conociendo'>
+	<div class='texto-mensaje'><h1>Mensaje a Ricardo</h1>
+	</div>
+	<table>
+	 <tr>
+	
+	 <td><textarea cols="68" rows="15" class="textbox" placeholder="Textarea"></textarea></td>
+	 </tr>
+	 </table>
+    
+   
+
+	<div id='pie-caja'>
+        
+        <a href='mensaje'><h1>Seguir con el proceso</h1></a>
+        <div class='caja-flecha2' ><img src="{{ url_for('static', filename='img/flecha-conocenos-white.png') }}" width="20" alt='flecha adelante' /></div>
+	   </div>
+    
+        <div class='caja-derecha-white' ><img id='img-ordenar' src="{{ url_for('static', filename='img/flecha-menu-white180.png') }}" alt='flecha adelante' /></div>
+	   </div>
+
+
+        <div id='tip-paso'><h2>Tip Paso 4</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur</p>
+        </div>
+
+
+    </div>
+
+ 
+ </div>
+
+
+
+
+
+
+
+{% endblock %}

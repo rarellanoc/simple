@@ -28,7 +28,7 @@
 
 	<div id='pie-caja'>
         
-        <a href='mensaje'><h1>Seguir con el proceso</h1></a>
+        <a href='mensaje.html'><h1>Seguir con el proceso</h1></a>
         <div class='caja-flecha2' ><img src="{{ url_for('static', filename='img/flecha-conocenos-white.png') }}" width="20" alt='flecha adelante' /></div>
 	   </div>
     

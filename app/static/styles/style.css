@@ -271,8 +271,8 @@ background-color: #000;
 .caja-flecha {background-color: #000;
 		width: 38px;
 		height: 38px;
-		margin-top: -10px;
-		margin-right: -10px;
+		margin-top: -24px;
+		margin-right: -11px;
 		float:right;}
 
 
@@ -456,6 +456,40 @@ height; 30px; }
 .azul { background: #E67E22;}
 
 .azul:hover{ background: #D35400; }
+
+/* mensaje */
+
+
+ .textbox
+	  {
+	
+	  border: 1px solid #DBE1EB;
+	  font-size: 18px;
+	  font-family: Arial, Verdana;
+	  padding-left: 7px;
+	  padding-right: 7px;
+	  padding-top: 20px;
+	  padding-bottom: 20px;
+	  border-radius: 10px;
+	  -moz-border-radius: 10px;
+	  -webkit-border-radius: 10px;
+	  -o-border-radius: 10px;
+	  background: #FFFFFF;
+	  background: linear-gradient(left, #FFFFFF, #F7F9FA);
+	  background: -moz-linear-gradient(left, #FFFFFF, #F7F9FA);
+	  background: -webkit-linear-gradient(left, #FFFFFF, #F7F9FA);
+	  background: -o-linear-gradient(left, #FFFFFF, #F7F9FA);
+	  color: #2E3133;
+	  }
+	   
+	  .textbox:focus
+	  {
+	  color: #2E3133;
+	  border-color: #FBFFAD;
+	  }
+
+
+
       
 
 
