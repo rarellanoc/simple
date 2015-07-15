@@ -4,7 +4,7 @@ from flask import Flask, flash, redirect, url_for, request, get_flashed_messages
 from flask.ext.login import LoginManager, UserMixin, current_user, login_user, logout_user, login_required
 from flask.ext.restful import reqparse, abort, Api, Resource
 from flask_mail import Mail, Message
-from flask_weasyprint import HTML, render_pdf
+#from flask_weasyprint import HTML, render_pdf
 
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -143,11 +143,11 @@ def logout():
  #   	return render_template('database.html')
 
 
-@app.route('/hello_<name>.pdf')
-def hello_pdf(name):
+#@app.route('/hello_<name>.pdf')
+#def hello_pdf(name):
     
-    html = render_template('hello.html', name=name)
-    return render_pdf(HTML(string=html))
+#   html = render_template('hello.html', name=name)
+#    return render_pdf(HTML(string=html))
 
 
 @app.route('/confirmar')
@@ -192,6 +192,10 @@ def holaSolicitudes():
 @app.route("/conocer")
 def holaConocer():
         return render_template('conocer.html')
+
+@app.route("/mensaje")
+def holaMensaje():
+        return render_template('mensaje.html')
 
 @app.route('/perfil', methods=('GET', 'POST'))
 def datos():

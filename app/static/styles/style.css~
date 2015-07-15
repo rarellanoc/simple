@@ -137,6 +137,12 @@ li { width: 130px;
 	background: #fff;}
 
 
+.fixed2 {
+    position: fixed;
+    top: 42px;
+	}
+
+
 
 
 
@@ -161,26 +167,30 @@ margin-top: -2px;  }
 
 #content { font-size: 1.2em;
 
-	height: 900px;  }
+	height: auto;
+    min-height: 300px;}
 
 #container {
-    position: absolute;
     margin: 0px;
     padding: 0px;
-    width: 100%;
-    height: 100%;
+    width: 250px
+    height: auto;
     overflow: hidden;  
 }
 
+.absolute-add { position: absolute; 
+    
+    }
+
 #menu-lateral { 
-	position: absolute;
+background-color: #000; 
+    top: 50;
 	border : 1px solid gray ; 
-	float: left;
 	left: 0px;
 	width: 170px;
 	height: 300px; 
 	float: left;
-	background-color: #000;  
+	 
 	color: #fff; 
 	margin-top: 5px;}
 
@@ -218,7 +228,7 @@ margin-top: -2px;  }
 	width: 70%;  
 	background-color: #ccc; 
 	float: left;
-	margin: 20px 20px 20px 200px;
+	margin: 20px 20px 20px 20px;
  }
 
 
@@ -236,8 +246,19 @@ margin-top: -2px;  }
 	padding: 10px; 
 	color: #fff;
 	margin-top: 20px; 
+    white-space: nowrap;
+    -webkit-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    display:inline-block;
  
 	}
+
+.naranja { background: #666;}
+
+.naranja:hover{ background: #D35400; }
 
 .conocer a { color: #fff; 
 	font-size:1.3em}
@@ -250,8 +271,8 @@ margin-top: -2px;  }
 .caja-flecha {background-color: #000;
 		width: 38px;
 		height: 38px;
-		margin-top: -10px;
-		margin-right: -10px;
+		margin-top: -24px;
+		margin-right: -11px;
 		float:right;}
 
 
@@ -271,10 +292,206 @@ margin-top: -2px;  }
 #footer img { float : right;
 	margin: 10px; }
 
+#caja-principal { 
+    width:85%; 
+    margin-left: 200px;
+    margin-top: 30px;
+    float:left; 
+    height:auto;
+    margin-bottom: 200px;}
+
+
+/* Conociendo */
+
+.caja-conociendo {  font-size: 0.7em; 
+		
+	 width: 800px;
+	height: auto; 
+	float: left; 
+	background-color: #DCDCDC;
+	color: #fff;
+	margin-top: 50px; 
+    
+    text-transform: none; 
+   
+	}
 
 
 
+#pie-caja {  font-size: 0.7em; 
+	 width: 800px;
+	height: 50px; 
+	float: left; 
+	background-color: #000 ;
+	color: #fff;
+	bottom: 0;
+    pòsition:relative;
+    -webkit-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    
+    }
+#pie-caja:hover {background: #8FBC8F ;}
+
+.img-conociendo { 
+                width: 100%;
+    height: auto;
+    }
+
+.img-conociendo img { float:left;
+    margin: 30px; 
+    
+}
+
+.img-conociendo h2 { float:left; 
+                width: 60%; 
+        margin: 20px 0px 0px 20px; 
+    
+height; 30px; }
+
+.p-container { font-size: 1.4em; 
+                float: left; 
+                    width: 470px;
+            height: 100px;
+                margin: 15px 25px 55px 25px;
+     }
+
+.long { width: 550px; }
+
+
+
+#pie-caja h1 { text-align: center;
+    margin-top:15px;
+    color: #fff;
+}
+
+.caja-flecha2 {
+		width: 34px;
+		height: 25px;
+		margin-top: -25px;
+		margin-right: 5px;
+		float:right;}
+
+.caja-derecha-white {background-color: #000;
+		width: 59px;
+		height: 50px;
+        padding: inherit;
+		margin-top: -50px;
+		margin-right: 743px;
+		float:right;}
+.caja-derecha-white:hoover { background: #FF0026;}
+
+#img-ordenar { margin: 16px;}
+
+#img-foto2 { float: left;}
+
+
+#tip-paso { border: 1px dotted gray;
+        text-transform:  none; 
+        width: 220px;
+        height: 150px;
+        margin-top: 50px;
+        float: left;
+    padding: 10px; }
+
+.img-foto { border-radius: 50px;
+    }
+
+/* perfil */
+
+.caja-perfil {  font-size: 0.7em; 
+		
+	 width: 800px;
+	height: auto; 
+	float: left; 
+	background-color: #666;
+	color: #fff;
+	margin-top: 50px; 
+    
+    text-transform: none; 
+   
+	}
+
+.caja-perfil h1 { text-align: center; }
+
+#logo { border: 1px dotted gray;
+        text-transform:  none; 
+        width: 220px;
+        height: 150px;
+        margin-top: 50px;
+        float: left;
+    padding: 10px; }
+
+.logo-empresa img { 
+                width: 220px;
+        height: auto;
+        margin-top: 55px;
+    }
+
+
+
+
+.boton{
+            text-align:center;
+            text-decoration: none;
+      font-family: 'Helvetica Neue', Helvetica, sans-serif;
+      display:inline-block;
+            color: #FFF;
+            background: #7F8C8D;
+            padding: 5px 5px;
+            white-space: nowrap;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            margin: 10px 5px;
+            -webkit-transition: all 0.2s ease-in-out;
+            -ms-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+}
+
+.azul { background: #E67E22;}
+
+.azul:hover{ background: #D35400; }
+
+/* mensaje */
+
+
+ .textbox
+	  {
 	
+	  border: 1px solid #DBE1EB;
+	  font-size: 18px;
+	  font-family: Arial, Verdana;
+	  padding-left: 7px;
+	  padding-right: 480px;
+	  padding-top: 20px;
+	  padding-bottom: 20px;
+	  border-radius: 10px;
+	  -moz-border-radius: 10px;
+	  -webkit-border-radius: 10px;
+	  -o-border-radius: 10px;
+	  background: #FFFFFF;
+	  background: linear-gradient(left, #FFFFFF, #F7F9FA);
+	  background: -moz-linear-gradient(left, #FFFFFF, #F7F9FA);
+	  background: -webkit-linear-gradient(left, #FFFFFF, #F7F9FA);
+	  background: -o-linear-gradient(left, #FFFFFF, #F7F9FA);
+	  color: #2E3133;
+	  }
+	   
+	  .textbox:focus
+	  {
+	  color: #2E3133;
+	  border-color: #FBFFAD;
+	  }
+
+
+
+      
+
 
 
 
