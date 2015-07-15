@@ -10,7 +10,7 @@ from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, Length
 
 from flask_mail import Mail, Message
-from flask_weasyprint import HTML, render_pdf
+#from flask_weasyprint import HTML, render_pdf
 
 
 from flask.ext.sqlalchemy import SQLAlchemy

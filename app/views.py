@@ -177,13 +177,13 @@ def holaEstadisticas():
         return render_template('estadisticas.html', nombre=nombrevalue)
 
 
-@app.route("/select_<username>")
-def select(username):
-	tododeluser = usuarios.query.filter_by(user=username).first_or_404()
-	
-	encontrado = 'si'
-
-	return render_template('select.html' , usuario = tododeluser.user , ok=encontrado) 	
+#@app.route("/select_<username>")
+#def select(username):
+#	tododeluser = usuarios.query.filter_by(user=username).first_or_404()
+#	
+#	encontrado = 'si'
+#
+#	return render_template('select.html' , usuario = tododeluser.user , ok=encontrado) 	
 
 @app.route("/solicitudes")
 def holaSolicitudes():
@@ -201,7 +201,7 @@ def holaMensaje():
 def datos():
     form = MyFormulario()
     if form.validate_on_submit():
-       return success(request.form['name'])
+        return success(request.form['name'])
 	# return redirect(url_for('/success', name=form.name))
     return render_template('perfil.html', form=form)
 
@@ -220,8 +220,7 @@ def get_all_users():
 @app.route('/users', methods=['POST'])
 def create_user():
 	# create User object from JSON data	
-    
-    
+ 
     if request.json == None:
         print "json none"
     else:
@@ -243,8 +242,6 @@ def create_user():
 	return json.dumps("registro completo")
 
 
-
-#
 # Wrapper object which returns JSON total number of objects plus array of objects
 #
 def wrapper(data):
@@ -268,16 +265,14 @@ def abort_if_todo_doesnt_exist(todo_id):
         abort(404, message="Todo {} doesn't exist".format(todo_id))
 
 parser = reqparse.RequestParser()
-parser = reqparse.RequestParser()
-parser.add_argument('task', type=str)
 
+parser.add_argument('task', type=str)
 
 TODOS = {
     'todo1': {'task': 'build an API'},
     'todo2': {'task': '?????'},
     'todo3': {'task': 'profit!'},
 }
-
 
 def abort_if_todo_doesnt_exist(todo_id):
     if todo_id not in TODOS:
