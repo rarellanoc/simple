@@ -1,8 +1,4 @@
 *.pyc
 *.py~
 doc.txt
-simple-venv
-simple-venv/*
-contenedor
-contenedor/*
 config.py

@@ -37,6 +37,7 @@ background-color:black;
 width:9%;
 height:20px;
 padding: 0.5px;
+
 position: relative;
 float: left;
 }
@@ -111,6 +112,8 @@ color:#000;
 color:#ccc;
 }
 
+
+#iniciarsesion { margin-top: 5px; }
 .whitefont { color: white; }
 .blackfont { color: black; }
 
@@ -209,7 +212,7 @@ background-color: #000;
 
 
 #img-logo , #img-flecha-derecha { float: right;
-				margin: 5px;  }
+				margin: 1px 13px;  }
 
 #img-flecha-derecha { margin-top: 16px; }
 
@@ -281,7 +284,7 @@ background-color: #000;
 /* footer */
 
 
-#footer { height: 130px;
+#footer { height: 50px;
 	bottom: 0px; 
 	position: fixed; 
 	width:100%;
@@ -290,7 +293,18 @@ background-color: #000;
 	}
 
 #footer img { float : right;
-	margin: 10px; }
+	margin: 2px; }
+
+#footer ul { width: 60%;
+    height: 30px;
+    margin-top: 20px; }
+
+#footer ul li { margin-right: 70px; 
+                width: auto;
+                }
+#footer ul li a { text-transform: lowercase;
+                font-size: 0.9em;}
+
 
 #caja-principal { 
     width:85%; 
