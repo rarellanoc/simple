@@ -1,11 +1,15 @@
 body { color: gray;
     text-transform: uppercase;
-        font-family: sans-serif;
+        font-family: Helvetica, sans-serif;
         font-size: 0.7em;  
         margin: 0px;
         }
 
 a { text-decoration: none; }
+
+h1 { font-size: 1.6em; 
+    font-weight: normal;
+text-transform: none;}
 
 #header { width: 100%;
         height: 200px;
@@ -308,7 +312,7 @@ background-color: #000;
                 width: auto;
                 }
 #footer ul li a { text-transform: lowercase;
-                font-size: 0.9em;}
+                font-size: 1.1em;}
 
 
 #caja-principal { 

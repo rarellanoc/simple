@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>invitar</p>
+
+<br/>
+
+
+<div id='registrobox'>
+ <form action="/invitar" method="post">
+     
+     
+	 
+     <div class='formbox'>
+     {{ form.csrf_token }}
+    {{ form.email.label }} {{ form.email(size=20, class_="form-control", placeholder='mail@correo.com') }}
+         
+     </div>
+     
+
+     
+     <div class='formbox'>
+    
+	 <button type="submit" value="Go" class='form-submit'>Go</button>
+         
+     </div>
+</form>
+</div>
+
+
+<div class='flashed'>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+    
+</div>
+
+
+{% endblock %}

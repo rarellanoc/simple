@@ -1,4 +1,4 @@
-import time, os, types
+import time, os, types, string, random
 
 from flask import Flask, flash, redirect, url_for, request, get_flashed_messages, render_template, g, jsonify
 from flask.ext.login import LoginManager, UserMixin, current_user, login_user, logout_user, login_required
@@ -12,10 +12,9 @@ from json import dumps
 
 import json
 
-from app import app, model, forms, db
+from app import app, model, forms, db, mail
 
-from forms import MyFormulario
-from forms import MyForm, RegistroForm, LoginForm
+from forms import RegistroForm, LoginForm, TokenForm, MyForm, MyFormulario
 from model import *
 
 
@@ -93,17 +92,22 @@ def login_check():
     return render_template('login.html', form=form)
 
 
-def sendmail(quien):
+def sendmail(quien, que):
 
-    msg = Message("Hello",
-                  sender="madeer.lab@gmail.com",
-                  recipients=[quien])
-    msg.body = "testing"
-    msg.html = "<b>testing</b>"
+    msg = Message("Madeer Invitation",
+                  sender="madeer.lab@gmail.com"
+                  )
+    
+    msg.add_recipient(quien)
+    msg.body = "token"
+    msg.html = str(current_user.email)+" te ha enviado una invitacion a <a href='http://beta.madeer.cl/registro'>Madeer</a>, copia el siguiente token para registrarte:<b>"+str(que)+"</b>"
+    try:
+        mail.send(msg)
+        return True
+    except :
+        return False
 
-    mail.send(msg)
-
-    return "Enviado"
+    return False
 
 @app.route('/formulario', methods=('GET', 'POST'))
 def submit():
@@ -156,12 +160,42 @@ def registro():
 @app.route('/tokenadd_<token>')
 @login_required
 def add_tokens(token):
+
+    
+    
     
     t = Token(token=token)
     db.session.add(t)
     db.session.commit()
     
     return "token added"
+
+
+@app.route('/invitar', methods=('GET', 'POST'))
+def invitar():
+    form = TokenForm()
+    if form.validate_on_submit():
+		
+        
+        if request.method == 'POST' and form.validate():
+    
+            email = str(request.form['email'])
+
+
+            token= ''.join(random.choice(string.ascii_uppercase) for i in range(6))
+#
+            if sendmail(email, token) == True:
+
+                t = Token(token=token)
+
+                db.session.add(t)
+                db.session.commit()
+                return render_template('enviado.html', email=email)
+            else:
+                return render_template('404.html')
+            #return render_template('enviado.html', email=email, token=token)
+    
+    return render_template('invitar.html', form=form)
 
 
 def testdata(user):
@@ -277,6 +311,7 @@ def holaMensaje():
         return render_template('mensaje.html')
 
 @app.route('/perfil', methods=('GET', 'POST'))
+@login_required
 def datos():
     form = MyFormulario()
     if form.validate_on_submit():

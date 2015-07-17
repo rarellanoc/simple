@@ -30,5 +30,9 @@ class LoginForm(Form):
     email = EmailField('correo', validators=[DataRequired(),Length(min=5, max=20, message="direccion fuera de rango"),Email("Ingrese un correo real")])
     password = PasswordField('password', validators=[DataRequired(),Length(min=5, max=20, message="nombre fuera de rango")])
 	
-	
+class TokenForm(Form):
+    email = EmailField('correo', validators=[DataRequired(),Length(min=5, max=20, message="direccion fuera de rango"), Email("Ingrese un correo real")])
+    
+
+
 	

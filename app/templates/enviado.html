@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <h3>enviado</h3>
+
+ {% if current_user.is_authenticated() %}
+
+invitacion enviada a {{ email }} .
+
+{% else %}
+
+<p>Disponible para usuarios registrados. <a href="/registro">Inscribete</a> </p>
+
+
+{%endif %}
+
+{% endblock %}
