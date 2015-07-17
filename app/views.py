@@ -267,10 +267,12 @@ def holaSolicitudes():
     return render_template('solicitudes.html', solicitudes = solicitudes, nro = nro)
 
 @app.route("/conocer")
+@login_required
 def holaConocer():
         return render_template('conocer.html')
 
 @app.route("/mensaje")
+@login_required
 def holaMensaje():
         return render_template('mensaje.html')
 

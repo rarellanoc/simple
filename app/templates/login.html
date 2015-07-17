@@ -3,7 +3,7 @@
 {% block content %}
 
 
-
+<div id='loginbox'>
 
 <form method="POST" action="/login">
 
@@ -22,12 +22,13 @@
     {{ form.password.label }} {{ form.password(size=20, class_="form-control") }}
     
     </div>
-    
-     <div class='formbox'>
-    
-  <input type="submit" value="Ingresar" class='form-control'>
-        
+
+    <div class='formbox'>
+    <button type="submit" value="Ingresar" class='form-submit'>Ingresar </button>
     </div>
+
 </form>
+    
+</div>
 
 {% endblock %}
