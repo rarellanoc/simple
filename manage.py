@@ -10,6 +10,10 @@ manager.add_option('-c', '--config', dest='config', required=False)
 @manager.command
 def initdb():
     """initialize database"""
+    
+    
+    
+    
     db.drop_all()
     db.create_all()
 

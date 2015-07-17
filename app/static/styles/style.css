@@ -116,6 +116,7 @@ color:#ccc;
 #iniciarsesion { margin-top: 5px; }
 .whitefont { color: white; }
 .blackfont { color: black; }
+.greyfont { color: grey; }
 
 nav { width: 100% ;
     height: 30px; 
@@ -256,6 +257,7 @@ background-color: #000;
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     display:inline-block;
+    
  
 	}
 
@@ -263,18 +265,21 @@ background-color: #000;
 
 .naranja:hover{ background: #D35400; }
 
+.naranja a { font-weight: normal; }
+
 .conocer a { color: #fff; 
-	font-size:1.3em}
+	font-size:1.3em;
+    font-weight: normal;
+    }
 
 .conocer img {margin-left: 5px;
 		margin: 10px;
-		
 		 }
 
 .caja-flecha {background-color: #000;
 		width: 38px;
 		height: 38px;
-		margin-top: -24px;
+		margin-top: -11px;
 		margin-right: -11px;
 		float:right;}
 
@@ -293,7 +298,7 @@ background-color: #000;
 	}
 
 #footer img { float : right;
-	margin: 2px; }
+	margin-right: 20px; }
 
 #footer ul { width: 60%;
     height: 30px;
@@ -314,7 +319,8 @@ background-color: #000;
     height:auto;
     margin-bottom: 200px;}
 
-
+#caja-principal a { font-weight: bold; 
+    color: black; }
 /* Conociendo */
 
 .caja-conociendo {  font-size: 0.7em; 
@@ -501,7 +507,23 @@ height; 30px; }
 	  color: #2E3133;
 	  border-color: #FBFFAD;
 	  }
+#registrobox { width: 400px;
+        heigh: 500px;
 
+    float: left; }
+
+.flashed { width: 300px;
+        height: 200px;
+
+    float: left; }
+
+.formbox { width: 270px;
+    height: 45px; 
+    font-size: 0.9em;}
+
+input.form-control { float: right;
+height: 20px;
+}
 
 
       

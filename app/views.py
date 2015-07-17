@@ -15,8 +15,9 @@ import json
 from app import app, model, forms, db
 
 from forms import MyFormulario
-from forms import MyForm, RegistroForm
+from forms import MyForm, RegistroForm, LoginForm
 from model import *
+
 
 
 api = Api(app)
@@ -27,7 +28,11 @@ def index():
     
     if current_user.is_authenticated():
         
-        return redirect(url_for('home'))
+        solicitudes = Solicitud.query.filter_by(id_user=current_user.id)
+
+        nro_solic = solicitudes.count()
+        
+        return render_template('home.html', nro = nro_solic)
         
         
     return render_template('landing.html')
@@ -42,37 +47,50 @@ def load_user(id):
 	return User.query.get(int(id))
 
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
+#@app.route('/login')
+#def login():
+#    form = MyForm()
+#    
+#    
+#    if form.validate_on_submit():
+#        return redirect(url_for('login_check'))
+#    return render_template('login.html', form=form)
 
 @app.route('/success')
 def success(name):
     return render_template('success.html', name=name)
 
 
-@app.route('/login/check', methods=['post'])
+@app.route('/login', methods=('GET', 'POST'))
 def login_check():
     # validate username and password
-    email = request.form['email']
-	
-    registered_user = User.query.filter_by(email=email).first()
-	
-    if registered_user is None:
-	
-	return redirect(url_for('index'))
+    
+    form = LoginForm()
+    
+    if form.validate_on_submit():
+        
+        email = request.form['email']
 
-    else:
-		
-	pw = request.form['password']	
-	if (registered_user.check_password(pw)):
-		login_user(registered_user)
+        registered_user = User.query.filter_by(email=email).first()
 
-	else:
-		flash('Usuario o clave incorrecta')
+        if registered_user is None:
 
-    return redirect(url_for('index'))
+            return redirect(url_for('index'))
 
+        else:
+
+            pw = request.form['password']	
+            if (registered_user.check_password(pw)):
+                login_user(registered_user)
+
+            else:
+                flash('Usuario o clave incorrecta')
+
+        
+        return redirect(url_for('index'))
+    
+    
+    return render_template('login.html', form=form)
 
 
 def sendmail(quien):
@@ -91,7 +109,7 @@ def sendmail(quien):
 def submit():
     form = MyForm()
     if form.validate_on_submit():
-       return success(request.form['name'])
+        return success(request.form['name'])
 	# return redirect(url_for('/success', name=form.name))
     return render_template('formulario.html', form=form)
 
@@ -101,29 +119,67 @@ def registro():
     form = RegistroForm()
     if form.validate_on_submit():
 		
-    	if request.method == 'POST' and form.validate():
-		
-		mail = form.mail.data
-		passs = form.password.data
-		
-		
-			
-		user = User(email=mail,password=passs)
-		#sendmail(str(user.correo))
-		
-		
+        if request.method == 'POST' and form.validate():
 
-	 	db.session.add(user)
-		db.session.commit()
+            mail = form.mail.data
+            passs = form.password.data
+            token = form.token.data
+            
+            if Token.query.filter_by(token=token, disponible="si").first() != None:
+                
 
-		#flash('Gracias por registrarse, recibira un correo de confirmacion')
-		return render_template('confirmar.html', user=user)
-	
-	
+                user = User(email=mail,password=passs)
+                #sendmail(str(user.correo))
+
+                t = Token.query.filter_by(token=token).first()
+                t.disponible = "no"
+                db.session.commit()
+
+                db.session.add(user)
+
+                idfortest = User.query.filter_by(email=mail).first()
+
+                testdata(idfortest)
+
+                db.session.commit()
+
+                #flash('Gracias por registrarse, recibira un correo de confirmacion')
+                return render_template('confirmar.html', user=user)
+            
+            else:
+                flash('token no valido')
+                return render_template('registro.html', form=form)
     return render_template('registro.html', form=form)
 
 
-	
+
+@app.route('/tokenadd_<token>')
+@login_required
+def add_tokens(token):
+    
+    t = Token(token=token)
+    db.session.add(t)
+    db.session.commit()
+    
+    return "token added"
+
+
+def testdata(user):
+
+
+    #usuario = User(email='elarellano@gmail.com',password='holachao123')
+    #db.session.add(usuario)
+
+    solicitud1 = Solicitud(titulo='hola, esta es una solicitud', cuerpo='madeer desea que compartas este sitio con dise&ntilde;adores', id_user=user.id)
+    db.session.add(solicitud1)
+    solicitud2 = Solicitud(titulo='puedes eliminarlas en cualquier momento', cuerpo='gracias por registrarte, esta es una solicitud de prueba, peudes eliminarla', id_user=user.id)
+    db.session.add(solicitud2)
+    solicitud3 = Solicitud(titulo='madeer te pide que visites su blog', cuerpo='vista el blog', id_user=user.id)
+    db.session.add(solicitud3)
+    
+    
+    
+
 
 
 @app.route('/logout')
@@ -163,18 +219,35 @@ def home():
 
 @app.route("/coleccion")
 def holaColeccion():
-        nombrevalue = "Ricardo"
-        return render_template('coleccion.html', nombre=nombrevalue)
 
+    htmlpage = 'coleccion.html'
+    return default(htmlpage)
 @app.route("/directorio")
 def holaDirectorio():
-        nombrevalue = "Ricardo"
-        return render_template('directorio.html', nombre=nombrevalue)
+    
+    htmlpage = 'directorio.html'
+    return default(htmlpage)
 
 @app.route("/estadisticas")
 def holaEstadisticas():
-        nombrevalue = "Ricardo"
-        return render_template('estadisticas.html', nombre=nombrevalue)
+
+    htmlpage = 'estadisticas.html'
+    return default(htmlpage)
+
+    
+    
+
+def default(htmlpage):
+    
+
+    nro_solic = 0
+
+    if current_user.is_authenticated():
+
+        solicitudes = Solicitud.query.filter_by(id_user=current_user.id)
+
+        nro_solic = solicitudes.count()
+    return render_template(htmlpage, nro = nro_solic)
 
 
 #@app.route("/select_<username>")
@@ -186,8 +259,12 @@ def holaEstadisticas():
 #	return render_template('select.html' , usuario = tododeluser.user , ok=encontrado) 	
 
 @app.route("/solicitudes")
+@login_required
 def holaSolicitudes():
-        return render_template('solicitudes.html')
+    solicitudes = Solicitud.query.filter_by(id_user=current_user.id)
+    
+    nro = solicitudes.count()
+    return render_template('solicitudes.html', solicitudes = solicitudes, nro = nro)
 
 @app.route("/conocer")
 def holaConocer():

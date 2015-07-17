@@ -2,7 +2,7 @@ from flask.ext.login import LoginManager, UserMixin, current_user, login_user, l
 from flask import jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
 
-from simple import db
+from app import db
 
 import json, sqlalchemy
 from collections import OrderedDict
@@ -48,9 +48,11 @@ class User(db.Model, UserMixin):
     created = db.Column(db.DateTime, default=db.func.now())
     disenadoress = db.relationship('Disenador', backref='user',lazy='dynamic')
     empresas = db.relationship('Empresa', backref='user',lazy='dynamic')
+    solicitudes = db.relationship('Solicitud', backref='user',lazy='dynamic')
+    tokens = db.relationship('Token', backref='user',lazy='dynamic')
     
 
-    def __init__(self, email=None,password=None,tipo_usuario=None, estado=None, ultimo_login=None, json=None):
+    def __init__(self, email=None,password=None,tipo_usuario=None, estado='no-confirmado', ultimo_login=None, json=None):
         self.email = email
         
         self.tipo_usuario = tipo_usuario
@@ -196,20 +198,48 @@ class Empresa(db.Model):
 	self.nro_solicitudes_rec = nro_solicitudes_rec
 	self.montos_historicos = montos_historicos
 	self.montos_pendientes = montos_pendientes
+    
+    
+class Solicitud(db.Model):
+    id = db.Column(db.Integer, primary_key = True, unique=True)
+    fecha = db.Column(db.DateTime, default=db.func.now())
+    activa = db.Column(db.String(20))
+    vista = db.Column(db.String(20))
+    titulo = db.Column(db.String(100))
+    cuerpo = db.Column(db.String(500))
+    id_user = db.Column(db.Integer, db.ForeignKey('user.id'))
+                        
+    def __init__(self, activa='si', vista='no', titulo = None, cuerpo=None, id_user=None):
+        self.activa = activa
+        self.vista = vista
+        self.titulo = titulo
+        self.cuerpo = cuerpo
+        self.id_user = id_user
+		
+        
+class Token(db.Model):
+    id = db.Column(db.Integer, primary_key = True, unique=True)
+    token = db.Column(db.String(20))
+    disponible = db.Column(db.String(20))
+    id_user = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
+    def __init__(self, token=None, disponible='si', id_user=None):
+        
+        self.token=token
+        self.disponible = disponible
+        self.id_user = id_user
+        
+    
+    
+    
+
+
+    
+    
 						
 		
 		
-class usuarios(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user = db.Column(db.String(80), unique=True)
-    password = db.Column(db.String(80), unique=True)
 
-    def __init__(self, user, password):
-        self.user = user
-        self.password = password
-
-    def __repr__(self):
-        return '<User %r>' % self.username
 						
     
     

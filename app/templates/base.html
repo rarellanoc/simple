@@ -37,11 +37,7 @@
 <div>
  
 <ul>
-<li><a href="">Correos</a></li>
-<li><a href="">Mensajes</a></li>
-<li><a href="">Configuracion</a></li>
-<li><a href="">Diseños</a></li>
-<li><a href="/formulario">Mis Datos</a></li>
+
 <li><a href="logout">Cerrar Sesion</a></li>
 </ul>
 </div>
@@ -98,16 +94,21 @@
         
         
         
+        {% if current_user.is_authenticated() %}
+        
         
           <div id='menu-lateral' >
 	<h3>Menu</h3><img id='img-flecha-derecha' src="{{ url_for('static', filename='img/flecha-menu-white180.png') }}" alt='esconder menu' /></a>
 	
 	<ul>
 	   <li><a href='/perfil' >Perfil</a></li>
-	   <li><a href='/solicitudes'>Solicitudes</a><div id='nro-solicitudes' > <p>3</p> </div></li>
+	   <li><a href='/solicitudes'>Solicitudes</a><div id='nro-solicitudes' > <p>{{ nro }}</p> </div></li>
 	</ul>
   </div>
         
+    
+    
+    {% endif %}
         
         <div id='caja-principal'>{% block content %}{% endblock %}</div>
     
@@ -123,12 +124,12 @@
 
 	            <a href='/' ><img width='40px' alt="logo-madeer" src="{{ url_for('static', filename='img/logo.png') }}" /></a>
 <ul>
-    <li><a class='whitefont' href=''>about</a></li>
+    <li><a class='greyfont' href=''>about</a></li>
     <li><a class='whitefont' href='http://life.madeer.cl'>blog</a></li>
-    <li><a class='whitefont' hreflang=""href=''>aviso legal</a></li>
-    <li><a class='whitefont' href=''`>cómo postular</a></li>
-    <li><a class='whitefont' href=''>asociados</a></li>
-    <li><a class='whitefont' href=''>twitter</a></li>
+    <li><a class='greyfont' href=''>aviso legal</a></li>
+    <li><a class='greyfont' href=''`>cómo postular</a></li>
+    <li><a class='greyfont' href=''>asociados</a></li>
+    <li><a class='whitefont' href='http://www.twitter.com/madeer_lab'>twitter</a></li>
     
     </ul>
     

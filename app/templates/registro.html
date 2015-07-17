@@ -2,18 +2,59 @@
 
 {% block content %}
 
+<p>inscripci&oacute;n</p>
 
+<br/>
+
+
+<div id='registrobox'>
  <form action="/registro" method="post">
-	 {{ form.csrf_token }}
-    {{ form.mail.label }} {{ form.mail(size=20) }}
-
-      {{ form.csrf_token }}
-    {{ form.password.label }} {{ form.password(size=20) }}
-
-    {{ form.csrf_token }}
-    {{ form.password_r.label }} {{ form.password_r(size=20) }}
+     
+     
 	 
-	 <input type="submit" value="Go">
+     <div class='formbox'>
+     {{ form.csrf_token }}
+    {{ form.mail.label }} {{ form.mail(size=20, class_="form-control", placeholder='mail@correo.com') }}
+         
+     </div>
+     
+     
+     <div class='formbox'>
+      {{ form.csrf_token }}
+    {{ form.token.label }} {{ form.token(size=20, class_="form-control", placeholder='token valido') }}
+    
+     </div>
+     
+<div class='formbox'>
+      {{ form.csrf_token }}
+    {{ form.password.label }} {{ form.password(size=20, class_="form-control") }}
+    
+     </div>
+<div class='formbox'>
+    {{ form.csrf_token }}
+    {{ form.password_r.label }} {{ form.password_r(size=20, class_="form-control") }}
+	 
+     </div>
+     
+     <div class='formbox'>
+    
+	 <input type="submit" value="Go" class='form-control'>
+         
+     </div>
 </form>
+</div>
+<div class='flashed'>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+    
+</div>
 
 {% endblock %}

@@ -3,5 +3,15 @@
 {% block content %}
         <h3>Estadisticas</h3>
 
-<p>Disponible para usuarios registrados. Inscribete para solicitar acceso</p>
+ {% if current_user.is_authenticated() %}
+
+AUN NO HAY DATOS
+
+{% else %}
+
+<p>Disponible para usuarios registrados. <a href="/registro">Inscribete</a> </p>
+
+
+{%endif %}
+
 {% endblock %}

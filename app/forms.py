@@ -4,9 +4,9 @@ from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 class MyForm(Form):
-    name = StringField('name', validators=[DataRequired(),Length(min=5, max=20, message="nombre fuera de rango")])
+    mail = EmailField('correo', validators=[DataRequired(),Length(min=5, max=20, message="direccion fuera de rango"),Email("Ingrese un correo real")])
     password = PasswordField('password', validators=[DataRequired(),Length(min=5, max=20, message="nombre fuera de rango")])
-    ciudad = StringField('ciudad', validators=[DataRequired(),Length(min=5, max=20, message="nombre fuera de rango")])
+
     
 class MyFormulario(Form):
     Telefono = StringField('Telefono', validators=[DataRequired(),Length(min=5, max=20, message="telefono fuera de rango")])
@@ -16,12 +16,19 @@ class MyFormulario(Form):
 	
 	
 class RegistroForm(Form):
-	mail = EmailField('correo', validators=[DataRequired(),Length(min=5, max=20, message="direccion fuera de rango"), Email("Ingrese un correo real")])
-	
-	
-	
-	password = PasswordField('password', validators=[DataRequired(),Length(min=5, max=20, message="nombre fuera de rango"), EqualTo('password_r', message='Passwords deben coincidir')])
-	password_r = PasswordField('password rep', validators=[DataRequired(),Length(min=5, max=20, message="nombre fuera de rango")])
+    mail = EmailField('correo', validators=[DataRequired(),Length(min=5, max=20, message="direccion fuera de rango"), Email("Ingrese un correo real")])
+
+    token = StringField('token', validators=[DataRequired(),Length(min=6, max=7, message="token no valido")])
+
+
+
+    password = PasswordField('password', validators=[DataRequired(),Length(min=5, max=20, message="nombre fuera de rango"), EqualTo('password_r', message='Passwords deben coincidir')])
+    password_r = PasswordField('password rep', validators=[DataRequired(),Length(min=5, max=20, message="nombre fuera de rango")])
+
+    
+class LoginForm(Form):
+    email = EmailField('correo', validators=[DataRequired(),Length(min=5, max=20, message="direccion fuera de rango"),Email("Ingrese un correo real")])
+    password = PasswordField('password', validators=[DataRequired(),Length(min=5, max=20, message="nombre fuera de rango")])
 	
 	
 	
